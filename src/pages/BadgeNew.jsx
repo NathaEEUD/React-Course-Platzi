@@ -3,6 +3,7 @@ import '../assets/styles/components/BadgeNew.scss';
 import header from '../assets/static/badge-header.svg';
 import Navbar from '../components/Navbar';
 import Badge from '../components/Badge';
+import BadgeForm from '../components/BadgeForm';
 
 class BadgeNew extends Component {
   render() {
@@ -14,7 +15,7 @@ class BadgeNew extends Component {
         </div>
         <div className='container'>
           <div className='row'>
-            <div className='col'>
+            <div className='col-6'>
               <Badge
                 firstName='Nathaly'
                 lastName='Riaño'
@@ -22,6 +23,9 @@ class BadgeNew extends Component {
                 jobTitle='Frontend Engineer'
                 twitter='nasterboost'
               />
+            </div>
+            <div className='col-6'>
+              <BadgeForm />
             </div>
           </div>
         </div>
