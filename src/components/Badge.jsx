@@ -10,18 +10,14 @@ class Badge extends Component {
           <img src={confLogo} alt='Logo de la conferencia' />
         </div>
         <div className='badge__section-name'>
-          <img
-            className='badge__avatar'
-            src='https://www.gravatar.com/avatar?d=identicon'
-            alt='Avatar'
-          />
+          <img className='badge__avatar' src={this.props.avatarUrl} alt='Avatar' />
           <h1>
-            Nathaly <br /> Riaño
+            {this.props.firstName} <br /> {this.props.lastName}
           </h1>
         </div>
         <div className='badge__section-info'>
-          <h3>Frontend Engineer</h3>
-          <span>@nasterboost</span>
+          <h3>{this.props.jobTitle}</h3>
+          <span>@{this.props.twitter}</span>
         </div>
         <div className='badge__footer'>#platziconf</div>
       </div>

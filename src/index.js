@@ -2,6 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/styles/App.scss';
-import Badge from './components/Badge';
+import BadgeNew from './pages/BadgeNew';
 
-ReactDOM.render(<Badge />, document.getElementById('app'));
+ReactDOM.render(<BadgeNew />, document.getElementById('app'));
