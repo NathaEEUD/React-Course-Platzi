@@ -3,5 +3,6 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/styles/App.scss';
 import BadgeNew from './pages/BadgeNew';
+import Badges from './pages/Badges';
 
-ReactDOM.render(<BadgeNew />, document.getElementById('app'));
+ReactDOM.render(<Badges />, document.getElementById('app'));
