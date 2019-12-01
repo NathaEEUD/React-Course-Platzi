@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../assets/styles/components/BadgesList.scss';
 
 class BadgesListItem extends Component {
   render() {
     return (
-      <div className='badges-list-item'>
+      <div className="badges-list-item">
         <img
-          className='badges-list-item__avatar'
+          className="badges-list-item__avatar"
           src={this.props.badge.avatarUrl}
           alt={`${this.props.badge.firstName} ${this.props.badge.lastName}`}
         />
@@ -26,10 +27,21 @@ class BadgesListItem extends Component {
 
 class BadgesList extends Component {
   render() {
+    if (this.props.badges.length === 0) {
+      return (
+        <div>
+          <h3>No badges were found</h3>
+          <Link className="btn btn-primary" to="/badges/new">
+            Create new badge
+          </Link>
+        </div>
+      );
+    }
+
     return (
-      <div className='badges-list'>
-        <div className='badges__container'>
-          <ul className='list-unstyled'>
+      <div className="badges-list">
+        <div className="badges__container">
+          <ul className="list-unstyled">
             {this.props.badges.map(badge => {
               return (
                 <li key={badge.id}>
