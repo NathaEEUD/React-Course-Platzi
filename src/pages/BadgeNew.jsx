@@ -3,10 +3,13 @@ import '../assets/styles/components/BadgeNew.scss';
 import header from '../assets/static/platzi-conf-logo.svg';
 import Badge from '../components/Badge';
 import BadgeForm from '../components/BadgeForm';
+import PageLoading from '../components/PageLoading';
 import api from '../api';
 
 class BadgeNew extends Component {
   state = {
+    loading: false,
+    error: null,
     form: {
       firstName: '',
       lastName: '',
@@ -37,6 +40,8 @@ class BadgeNew extends Component {
       this.setState({
         loading: false,
       });
+
+      this.props.history.push('/badges');
     } catch (error) {
       this.setState({
         loading: false,
@@ -46,6 +51,10 @@ class BadgeNew extends Component {
   };
 
   render() {
+    if (this.state.loading) {
+      return <PageLoading />;
+    }
+
     return (
       <React.Fragment>
         <div className="badgeNew__hero">
@@ -68,6 +77,7 @@ class BadgeNew extends Component {
                 onChange={this.handleChange}
                 onSubmit={this.handleSubmit}
                 formValues={this.state.form}
+                error={this.state.error}
               />
             </div>
           </div>
