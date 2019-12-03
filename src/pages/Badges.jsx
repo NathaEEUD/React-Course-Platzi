@@ -23,6 +23,8 @@ class Badges extends Component {
     console.log('3. componentDidMount()');
 
     this.fetchData();
+
+    // setInterval(this.fetchData, 5000);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -65,7 +67,7 @@ class Badges extends Component {
   render() {
     console.log('2/4. render()');
 
-    if (this.state.loading) {
+    if (this.state.loading && !this.state.data) {
       return <PageLoading />;
     }
 
