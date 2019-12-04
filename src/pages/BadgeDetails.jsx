@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../assets/styles/components/BadgeDetails.scss';
 import confLogo from '../assets/static/platzi-conf-logo.svg';
 import Badge from '../components/Badge';
 import DeleteBadgeModal from '../components/DeleteBadgeModal';
 
+function useIncreaseCount(max) {
+  const [count, setCount] = useState(0);
+
+  if (count > max) {
+    setCount(0);
+  }
+
+  return [count, setCount];
+}
+
 function BadgeDetails(props) {
+  const [count, setCount] = useIncreaseCount(4);
+
   const { badge } = props;
 
   return (
@@ -38,6 +50,14 @@ function BadgeDetails(props) {
           <div className="col-6">
             <h2>Actions</h2>
             <div>
+              <button
+                className="btn btn-warning mr-4 mb-4"
+                onClick={() => {
+                  setCount(count + 1);
+                }}
+              >
+                Increase Count:::> {count}
+              </button>
               <Link to={`/badges/${badge.id}/edit`} className="btn btn-primary mb-4">
                 Edit
               </Link>
