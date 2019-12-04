@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import '../assets/styles/components/BadgesList.scss';
 import Gravatar from './Gravatar';
@@ -22,14 +22,23 @@ class BadgesListItem extends Component {
   }
 }
 
+function useSearchBadges(badges) {
+  const [query, setQuery] = useState('');
+  const [filteredBadges, setfilteredBadges] = useState(badges);
+
+  useMemo(() => {
+    const result = badges.filter(badge =>
+      `${badge.firstName} ${badge.lastName}`.toLowerCase().includes(query.toLowerCase()),
+    );
+    setfilteredBadges(result);
+  }, [badges, query]);
+
+  return { query, setQuery, filteredBadges };
+}
+
 function BadgesList(props) {
   const { badges } = props;
-
-  const [query, setQuery] = useState('');
-
-  const filteredBadges = badges.filter(badge =>
-    `${badge.firstName} ${badge.lastName}`.toLowerCase().includes(query.toLowerCase()),
-  );
+  const { query, setQuery, filteredBadges } = useSearchBadges(badges);
 
   if (filteredBadges.length === 0) {
     return (
